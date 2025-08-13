@@ -10,7 +10,7 @@
 
 import Count from "./Count";
 
-  
+
 //   // const clientHandler=()=>{
 //   //     alert("Client Handler")
 //   // }
@@ -33,11 +33,11 @@ import Count from "./Count";
 // <ButtonClass value="Send" click={clientHandler}/>
 
 
-      
-      
+
+
 //       </div>
 //     )
-  
+
 // }
 
 // export default App
@@ -45,11 +45,39 @@ import "./App.css"
 import Forms from "./Forms";
 import VForms from "./VForms";
 import CountClass from "./CountClass";
-const  App=()=>{
+import Home from "./components/Home";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import { useNavigate } from "react-router-dom";
+const App = () => {
+  const navigate = useNavigate();
+
 
   return (
-  // <VForms/>
-  <CountClass/>
+    // <VForms/>
+    // <CountClass/>
+    // <VForms/>
+    <div>
+      Application
+      <Navbar />
+      <button onClick={() => {
+        navigate("/contact");
+
+      }}>Contact</button>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/about" element={<About />}></Route>
+        <Route path="/contact" element={<Contact />}></Route>
+        <Route path="/products/" >
+          <Route path="clothes" element={<div>Clothing products</div>} />
+          <Route path="electronics" element={<div>Electronics products</div>} />
+          <Route path="mobiles" element={<div>Mobile products</div>} />
+        </Route>
+      </Routes>
+
+    </div>
   )
 
 }
