@@ -1,84 +1,153 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
-// import Greet from "./Greet"
-// import Button from "./Button"
-// import GreetClass from './GreetClass'
-// import ButtonClass from './ButtonClass'
-// function App() {
+// // import { useState } from 'react'
+// // import reactLogo from './assets/react.svg'
+// // import viteLogo from '/vite.svg'
+// // import './App.css'
+// // import Greet from "./Greet"
+// // import Button from "./Button"
+// // import GreetClass from './GreetClass'
+// // import ButtonClass from './ButtonClass'
+// // function App() {
 
-import Count from "./Count";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
-
-//   // const clientHandler=()=>{
-//   //     alert("Client Handler")
-//   // }
-
-//   //  const clientHandlerAnother=()=>{
-//   //     alert("Client Handler Another")
-//   // }
-//   const clientHandler=(e)=>{
-//     console.log(e.target.innerText);
-//   }
-//     return (
-//       <div>
-//       {/* <Greet name="Code" age={10}/>
-//        <Greet name="Chitkara" age={10}/>
-//       <Greet/> */}
-//       {/* <Button value="Send" click={clientHandler}/>
-//        <Button value="Login" click={clientHandler}/> */}
-// {/* 
-// <GreetClass name="Code"/> */}
-// <ButtonClass value="Send" click={clientHandler}/>
+// import Count from "./Count";
 
 
+// //   // const clientHandler=()=>{
+// //   //     alert("Client Handler")
+// //   // }
+
+// //   //  const clientHandlerAnother=()=>{
+// //   //     alert("Client Handler Another")
+// //   // }
+// //   const clientHandler=(e)=>{
+// //     console.log(e.target.innerText);
+// //   }
+// //     return (
+// //       <div>
+// //       {/* <Greet name="Code" age={10}/>
+// //        <Greet name="Chitkara" age={10}/>
+// //       <Greet/> */}
+// //       {/* <Button value="Send" click={clientHandler}/>
+// //        <Button value="Login" click={clientHandler}/> */}
+// // {/* 
+// // <GreetClass name="Code"/> */}
+// // <ButtonClass value="Send" click={clientHandler}/>
 
 
-//       </div>
-//     )
+
+
+// //       </div>
+// //     )
+
+// // }
+
+// // export default App
+// import "./App.css"
+// import Forms from "./Forms";
+// import VForms from "./VForms";
+// import CountClass from "./CountClass";
+// import Home from "./components/Home";
+// import About from "./components/About";
+// import Contact from "./components/Contact";
+// import { Route, Routes } from "react-router-dom";
+// import Navbar from "./components/Navbar";
+// import { useNavigate } from "react-router-dom";
+// import Products from "./components/products";
+// import NavigateProducts from "./components/NavigateProducts";
+// import Fashion from "./components/Fashion";
+// import Mobiles from "./components/Mobiles";
+// import Electronics from "./components/Electronics";
+// import ProductParent from "./components/ProductParent";
+// const App = () => {
+//   const navigate = useNavigate();
+
+
+//   return (
+//     // <VForms/>
+//     // <CountClass/>
+//     // <VForms/>
+//     <div>
+//       Application
+//       <Navbar />
+//       <button onClick={() => {
+//         let data = "fashion"
+//         //navigate("/products/"+data);
+//         // navigate(`/products/${data}`);
+//         navigate("/products", { state: { category: data } });
+
+
+
+//       }}>Contact</button>
+//       <Routes>
+//         <Route path="/" element={<Home />}></Route>
+//         <Route path="/about" element={<About />}></Route>
+//         <Route path="/contact" element={<Contact />}></Route>
+//         {/* <Route path="/products/:category" element={<Products/>}/>
+//         <Route path="/products" element={<NavigateProducts/>}/> */}
+//         {/* <Route path="/products/electronics" element={<Electronics/>}/>
+//          <Route path="/products/mobiles" element={<Mobiles/>}/>
+//           <Route path="/products/fashion" element={<Fashion/>}/> */}
+//         <Route path="/products/" element={<ProductParent/>}>
+//           <Route path="electronics" element={<Electronics />} />
+//           <Route path="mobiles" element={<Mobiles />} />
+//           <Route path="fashion" element={<Fashion />} />
+
+//         </Route>
+
+
+
+
+//         {/*
+//         /products/ss
+//         <Route path="/products/" >
+//           <Route path="clothes" element={<div>Clothing products</div>} />
+//           <Route path="electronics" element={<div>Electronics products</div>} />
+//           <Route path="mobiles" element={<div>Mobile products</div>} />
+//         </Route> */}
+//       </Routes>
+
+//     </div>
+//   )
 
 // }
+// export default App;
 
-// export default App
-import "./App.css"
-import Forms from "./Forms";
-import VForms from "./VForms";
-import CountClass from "./CountClass";
-import Home from "./components/Home";
-import About from "./components/About";
-import Contact from "./components/Contact";
-import { Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import { useNavigate } from "react-router-dom";
-const App = () => {
-  const navigate = useNavigate();
+import Test from "./components/Test"
+import Home from "./components/Home"
+import Lists from "./components/Lists";
+import Ctimer from "./components/Ctimer";
+import ClassTimer from "./components/ClassTimer";
+const testFunction=()=>{
+  return "Hi";
 
+}
 
+const routes=createBrowserRouter([
+
+  {
+    path:"/",
+    element:<ClassTimer/>,
+    
+  },
+  {
+    path:"/about",
+    element:<Test/>,
+    loader:testFunction
+  }
+
+])
+
+const App=()=>{
   return (
-    // <VForms/>
-    // <CountClass/>
-    // <VForms/>
-    <div>
-      Application
-      <Navbar />
-      <button onClick={() => {
-        navigate("/contact");
+    <>
+    Application
+    
+    <RouterProvider router={routes}/>
 
-      }}>Contact</button>
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/about" element={<About />}></Route>
-        <Route path="/contact" element={<Contact />}></Route>
-        <Route path="/products/" >
-          <Route path="clothes" element={<div>Clothing products</div>} />
-          <Route path="electronics" element={<div>Electronics products</div>} />
-          <Route path="mobiles" element={<div>Mobile products</div>} />
-        </Route>
-      </Routes>
-
-    </div>
+    
+    </>
   )
-
 }
 export default App;
