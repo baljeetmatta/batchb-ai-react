@@ -182,16 +182,26 @@
 import { Link, Route, Routes } from "react-router-dom";
 import Login from "./components/Login"
 import Dashboard from "./components/Dashboard";
+import UserDashboard from "./components/comp/UserDashboard";
+import { UserContext } from "./components/comp/UserContext";
+import { useState } from "react";
+import PrivateRoutes from "./PrivateRoutes";
 
 const App=()=>{
 
+  const [user,setUser]=useState(undefined);
   return (
     <>
-   
+    <UserContext.Provider value={{user,setUser}}>
+     
     <Routes>
+      <Route path="/" element={<UserDashboard/>}/>
       <Route path="/login" element={<Login/>}></Route>
-       <Route path="/dashboard" element={<Dashboard/>}></Route>
+      <Route path="/user/" element={<PrivateRoutes/>}>
+       <Route path="dashboard" element={<Dashboard/>}></Route>
+      </Route>
     </Routes>
+     </UserContext.Provider>
     </>
   )
 }

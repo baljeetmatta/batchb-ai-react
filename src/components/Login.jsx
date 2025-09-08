@@ -1,6 +1,6 @@
 // import { useState } from "react";
 
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 
 // const Login=()=>{
 
@@ -31,8 +31,11 @@ import { useRef, useState } from "react";
 // }
 // export default Login;
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "./comp/UserContext";
 const Login=()=>{
 const navigate=useNavigate();
+
+const data= useContext(UserContext);
 
     const [disable,setDisable]=useState(false);
     const [error,setError]=useState("");
@@ -55,7 +58,11 @@ const loginHandler=()=>{
         })
         console.log(results.length);
         if(results.length>0)
-            navigate("/Dashboard");
+        {
+            data.setUser(usernameRef.current.value);
+
+            navigate("/user/Dashboard");
+        }
         else
             setError("Invalid user/password")
 
