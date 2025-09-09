@@ -1,0 +1,87 @@
+1. Store. type of data object, array of objects
+2. actions - events. addBug, type, payload(data)
+type:"addBug"
+"title":"A new bug"
+type:"",
+payload:{
+    "title":""
+}
+Todo App 
+1 Task name, id, taskdate,isresolved
+2. Update  type,{id,status}
+    deleteBug
+3. Reducers -> event handler -. function (existing store, action(object))
+return updateStore
+1. Design the Store
+2. Define actions
+3. Define Reducers
+4. Setup Store
+
+1. Design a Store
+Todo
+[
+    {
+        id:1,
+        title:"",
+        isresolved:false;
+    }
+]
+one Reducers/Slice
+{
+
+        products:[],
+        carts:[],
+        user:{}
+}
+products,carts,user Slices
+
+multiple Reducers
+
+2. actions->object
+{
+    type:"taskAdded",
+    payload:{
+    title:"First Bug"
+    }
+},
+{
+    type:"taskDelete",
+    payload:{
+    id:1
+    }
+}
+
+function tasksReducers(store,action)
+{
+    if(action.type=="taskAdded")
+    {
+        const updateStore=[...store];
+        updateStore.push({
+
+        });
+        return updateStore;
+
+    }
+
+    if(action.type=="taskDeleted")
+    {
+        const updateStore=store.filter((item)=>{
+            if(item.id!=action.payload.id)
+            return true;
+        })
+        return updateStore;
+
+
+    }
+}
+
+4. Setup Store
+redux
+export const store=createStore(tasksReducers)
+store.dispatch({
+    type:"bugAdded",
+    payload:{
+        title:"First Page"
+    }
+})
+store.getState();
